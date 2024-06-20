@@ -25,10 +25,10 @@ try:
     print(f'"{yt.title}" downloaded and converted to MP3 successfully.')
 
 except RegexMatchError:
-    print("Invalid YouTube URL provided. Please check the URL and try again.")
+    print("Invalid YouTube URL. Please check the URL and try again.")
 
 except VideoUnavailable:
-    print("The video is unavailable. It may be private or deleted.")
+    print("Video unavailable. It may be private or deleted.")
 
 except subprocess.CalledProcessError as e:
     print(f"ffmpeg command failed: {e}")
