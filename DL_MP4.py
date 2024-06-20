@@ -1,11 +1,23 @@
 from pytube import YouTube
+from pytube.exceptions import RegexMatchError, VideoUnavailable
 
-video = YouTube(
-    str(input("Enter the URL of the video to download: "))
-)
+try:
+    video_url = input("Enter the URL of the video to download: ")
 
-yd = video.streams.get_highest_resolution()
+    video = YouTube(video_url)
 
-yd.download('/Users/treyweldon/Desktop/editing/Downloaded Video')
+    downloaded_file = video.streams.get_highest_resolution()
 
-print( '"' + video.title + '" Download Completed')
+    download_path = '/Users/treyweldon/Desktop/editing/Downloaded Video'
+    downloaded_file.download(download_path)
+
+    print(f'"{video.title}" Download Completed')
+
+except RegexMatchError:
+    print("Invalid YouTube URL provided. Please check the URL and try again.")
+
+except VideoUnavailable:
+    print("The video is unavailable. It may be private or deleted.")
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
