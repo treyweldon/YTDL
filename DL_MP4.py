@@ -14,10 +14,10 @@ try:
     print(f'"{video.title}" Download Completed')
 
 except RegexMatchError:
-    print("Invalid YouTube URL provided. Please check the URL and try again.")
+    print("Invalid YouTube URL. Please check the URL and try again.")
 
 except VideoUnavailable:
-    print("The video is unavailable. It may be private or deleted.")
+    print("Video unavailable. It may be private or deleted.")
 
 except Exception as e:
     print(f"An error occurred: {str(e)}")
